@@ -6,24 +6,24 @@ import styles from "../styles/Home.module.css";
 import { increment, decrement, getCount } from "../Blockchain";
 const Home: NextPage = () => {
   const [count, setCount] = useState(0);
-  // const obtainCount = async () => {
-  //   const res = await getCount();
-  //   console.log(res);
-  //   const resInInt = parseInt(res, 10);
-  //   console.log(resInInt);
-  //   setCount(resInInt);
-  // };
+  const obtainCount = async () => {
+    const res = await getCount();
+    console.log(res);
+    const resInInt = parseInt(res, 10);
+    console.log(resInInt);
+    setCount(resInInt);
+  };
 
-  // const increase = async () => {
-  //   const res = await increment();
-  //   console.log(res);
-  //   await obtainCount();
-  // };
-  // const decrease = async () => {
-  //   const res = await decrement();
-  //   console.log(res);
-  //   await obtainCount();
-  // };
+  const increase = async () => {
+    const res = await increment();
+    console.log(res);
+    await obtainCount();
+  };
+  const decrease = async () => {
+    const res = await decrement();
+    console.log(res);
+    await obtainCount();
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <ConnectButton />
-        <button
+        <button onClick={increase}
           style={{
             background: "green",
             padding: "5px",
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
         >
           increment
         </button>
-        <button
+        <button onClick={decrease}
           style={{
             background: "red",
             padding: "5px",
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         >
           Decrement
         </button>
-        <button
+        <button onClick={obtainCount}
           style={{
             background: "blue",
             padding: "5px",
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
           }}
         >
           {" "}
-          count value
+          {count}
         </p>
       </main>
 
